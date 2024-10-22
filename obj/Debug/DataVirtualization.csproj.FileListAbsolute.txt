@@ -1,0 +1,224 @@
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\DataVirtualization.XML
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\DataVirtualization.exe
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\DataVirtualization.pdb
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\obj\Debug\DataVirtualization.csproj.AssemblyReference.cache
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\obj\Debug\DemoWindow.baml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\obj\Debug\DemoWindow.g.cs
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\obj\Debug\App.g.cs
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\obj\Debug\DataVirtualization_MarkupCompile.cache
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\obj\Debug\DataVirtualization.g.resources
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\obj\Debug\DataVirtualization.Properties.Resources.resources
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\obj\Debug\DataVirtualization.csproj.GenerateResource.cache
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\obj\Debug\DataVirtualization.csproj.CoreCompileInputs.cache
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\obj\Debug\DataVirtualization.exe
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\obj\Debug\DataVirtualization.pdb
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\DataVirtualization.exe.config
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\Google.Protobuf.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\MySql.Data.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Buffers.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.IO.Pipelines.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Memory.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\ZstdSharp.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\Google.Protobuf.pdb
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\Google.Protobuf.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\MySql.Data.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Buffers.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.IO.Pipelines.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Memory.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\obj\Debug\DataVirtualization.csproj.CopyComplete
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\Elasticsearch.Net.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\Nest.dll
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\Elasticsearch.Net.pdb
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\Elasticsearch.Net.xml
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\Nest.pdb
+C:\Users\salomari\Downloads\datavirtualization\DataVirtualization\bin\Debug\Nest.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\DataVirtualization.exe.config
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\DataVirtualization.XML
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\DataVirtualization.exe
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\DataVirtualization.pdb
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\BouncyCastle.Cryptography.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\Elasticsearch.Net.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\Google.Protobuf.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\K4os.Compression.LZ4.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\K4os.Compression.LZ4.Streams.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\K4os.Hash.xxHash.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\MySql.Data.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\Nest.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Buffers.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Configuration.ConfigurationManager.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.IO.Pipelines.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Memory.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\ZstdSharp.dll
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\BouncyCastle.Cryptography.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\Elasticsearch.Net.pdb
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\Elasticsearch.Net.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\Google.Protobuf.pdb
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\Google.Protobuf.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\K4os.Compression.LZ4.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\K4os.Compression.LZ4.Streams.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\K4os.Hash.xxHash.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\MySql.Data.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\Nest.pdb
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\Nest.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Buffers.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Configuration.ConfigurationManager.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.IO.Pipelines.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Memory.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.csproj.AssemblyReference.cache
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\obj\Debug\DemoWindow.baml
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\obj\Debug\DemoWindow.g.cs
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\obj\Debug\App.g.cs
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization_MarkupCompile.cache
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.g.resources
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.Properties.Resources.resources
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.csproj.GenerateResource.cache
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.csproj.CoreCompileInputs.cache
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.csproj.CopyComplete
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.exe
+C:\Users\salomari\Downloads\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.pdb
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\DataVirtualization.exe.config
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\DataVirtualization.XML
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\DataVirtualization.exe
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\DataVirtualization.pdb
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\BouncyCastle.Cryptography.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\Elasticsearch.Net.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\Google.Protobuf.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\K4os.Compression.LZ4.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\K4os.Hash.xxHash.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\MySql.Data.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\Nest.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Buffers.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.IO.Pipelines.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Memory.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Numerics.Vectors.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\ZstdSharp.dll
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\BouncyCastle.Cryptography.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\Elasticsearch.Net.pdb
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\Elasticsearch.Net.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\Google.Protobuf.pdb
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\Google.Protobuf.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\K4os.Compression.LZ4.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\K4os.Compression.LZ4.Streams.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\K4os.Hash.xxHash.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\MySql.Data.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\Nest.pdb
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\Nest.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Buffers.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.IO.Pipelines.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Memory.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Numerics.Vectors.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\CTA\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.csproj.AssemblyReference.cache
+D:\CTA\datavirtualization - Copy\DataVirtualization\obj\Debug\DemoWindow.baml
+D:\CTA\datavirtualization - Copy\DataVirtualization\obj\Debug\DemoWindow.g.cs
+D:\CTA\datavirtualization - Copy\DataVirtualization\obj\Debug\App.g.cs
+D:\CTA\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization_MarkupCompile.cache
+D:\CTA\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.g.resources
+D:\CTA\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.Properties.Resources.resources
+D:\CTA\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.csproj.GenerateResource.cache
+D:\CTA\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.csproj.CoreCompileInputs.cache
+D:\CTA\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.csproj.CopyComplete
+D:\CTA\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.exe
+D:\CTA\datavirtualization - Copy\DataVirtualization\obj\Debug\DataVirtualization.pdb
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DataVirtualization.csproj.AssemblyReference.cache
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DemoWindow.g.cs
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\App.g.cs
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DataVirtualization_MarkupCompile.cache
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DataVirtualization_MarkupCompile.lref
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\DataVirtualization.exe.config
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\DataVirtualization.XML
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\DataVirtualization.exe
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\DataVirtualization.pdb
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\BouncyCastle.Cryptography.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\Elasticsearch.Net.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\Google.Protobuf.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\K4os.Compression.LZ4.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\K4os.Compression.LZ4.Streams.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\K4os.Hash.xxHash.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\MySql.Data.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\Nest.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Buffers.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.IO.Pipelines.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Memory.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Numerics.Vectors.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\ZstdSharp.dll
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\BouncyCastle.Cryptography.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\Elasticsearch.Net.pdb
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\Elasticsearch.Net.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\Google.Protobuf.pdb
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\Google.Protobuf.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\K4os.Compression.LZ4.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\K4os.Compression.LZ4.Streams.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\K4os.Hash.xxHash.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\MySql.Data.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\Nest.pdb
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\Nest.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Buffers.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.IO.Pipelines.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Memory.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Numerics.Vectors.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\CTA\datavirtualization_final\DataVirtualization\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DemoWindow.baml
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DataVirtualization.g.resources
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DataVirtualization.Properties.Resources.resources
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DataVirtualization.csproj.GenerateResource.cache
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DataVirtualization.csproj.CoreCompileInputs.cache
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DataVirtualization.csproj.CopyComplete
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DataVirtualization.exe
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DataVirtualization.pdb
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\Login.g.cs
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\Login.baml
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\HomeWindow.g.cs
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\HomeWindow.baml
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DemoWindowHost.g.cs
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\CTA\datavirtualization_final\DataVirtualization\obj\Debug\DemoWindowHost.baml

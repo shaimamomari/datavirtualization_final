@@ -1,0 +1,1624 @@
+﻿<UserControl  x:Class="DataVirtualization.DemoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <UserControl.Resources>
+        <!-- Style for ListView -->
+        <!-- Shaima -->
+
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <Style x:Key="lvStyle" TargetType="{x:Type ListView}">
+            <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True"/>
+            <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling"/>
+            <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="True"/>
+            <EventSetter Event="MouseLeftButtonUp" Handler="dg1_MouseLeftButtonUp"/>
+            <Setter Property="ListView.ItemsSource" Value="{Binding}"/>
+
+            <Setter Property="ListView.View">
+                <Setter.Value>
+                    <GridView>
+                        <GridViewColumn Header="Id" Width="100">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Id"/>
+                                        <TextBox Width="90" Margin="0,2,0,0" TextChanged="OnFilterTextChanged"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Id}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Name -->
+                        <GridViewColumn Header="Order ID" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Order ID"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍" IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" 
+                         TextChanged="OnNameFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <!-- Column for Validity Date -->
+                        <GridViewColumn Header="Entry Date" Width="250">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Entry Date" />
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+           Content="🔍"  IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Setter Property="IsChecked" Value="False"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- Filter Controls -->
+                                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <TextBlock Text="From:" VerticalAlignment="Center" />
+                                            <TextBox Name="FromDateTextBox" Width="100" Margin="5,0,0,0" IsReadOnly="True" />
+                                            <Image Source="calendar.png" Width="20" Height="20" MouseLeftButtonDown="FromDateIcon_MouseLeftButtonDown" Cursor="Hand" />
+                                            <Popup Name="FromDatePopup" PlacementTarget="{Binding ElementName=FromDateTextBox}" StaysOpen="True">
+                                                <Calendar Name="FromDateCalendar" SelectedDatesChanged="FromDateCalendar_SelectedDatesChanged"
+Tag="{Binding ElementName=FromDatePopup}" />
+                                            </Popup>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <TextBlock Text="To:    " VerticalAlignment="Center" />
+                                            <TextBox Name="ToDateTextBox" Width="100" Margin="5,0,0,0" IsReadOnly="True" />
+                                            <Image Source="calendar.png" Width="20" Height="20" MouseLeftButtonDown="ToDateIcon_MouseLeftButtonDown" Cursor="Hand" />
+                                            <Popup Name="ToDatePopup" PlacementTarget="{Binding ElementName=ToDateTextBox}" StaysOpen="True">
+                                                <Calendar Name="ToDateCalendar" SelectedDatesChanged="ToDateCalendar_SelectedDatesChanged"
+Tag="{Binding ElementName=ToDatePopup}" />
+                                            </Popup>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding entry_date}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+
+
+
+
+
+                        <GridViewColumn Header="Status" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Status"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"  IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Setter Property="IsChecked" Value="False"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+                                        <!-- ComboBox -->
+                                        <ComboBox x:Name="StatusComboBox" Width="140" Margin="0,2,0,0" SelectionChanged="OnStatusFilterChanged"
+                          Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <ComboBoxItem Content="All" Tag=""/>
+                                            <ComboBoxItem Content="Remaining" Tag="R"/>
+                                            <ComboBoxItem Content="Finished" Tag="F"/>
+                                            <ComboBoxItem Content="Modified" Tag="M"/>
+                                            <ComboBoxItem Content="Canceled" Tag="C"/>
+                                            <ComboBoxItem Content="Executed" Tag="TX"/>
+                                            <ComboBoxItem Content="Partially executed" Tag="X"/>
+                                            <ComboBoxItem Content="Rejected" Tag="R"/>
+                                        </ComboBox>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding status, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Column for Client ID -->
+                        <GridViewColumn Header="Client ID" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Client ID"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"   IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Setter Property="IsChecked" Value="False"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+                                        <!-- ComboBox -->
+                                        <ComboBox Width="140" Margin="0,2,0,0" SelectionChanged="OnFilterSelectionChanged"
+                          Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <ComboBoxItem Content="All" Tag="0" />
+                                            <ComboBoxItem Content="Mobile" Tag="990" />
+                                            <ComboBoxItem Content="Internet" Tag="999" />
+                                            <ComboBoxItem Content="PAM" Tag="3" />
+                                            <ComboBoxItem Content="OMS" Tag="4" />
+                                        </ComboBox>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Client_id}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+                        <!-- Column for Validity Date -->
+                        <GridViewColumn Header="Validity Date" Width="250">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Validity Date" />
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"  IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Setter Property="IsChecked" Value="False"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- Filter Controls -->
+                                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <TextBlock Text="From:" VerticalAlignment="Center" />
+                                            <TextBox Name="ValidityFromDateTextBox" Width="100" Margin="5,0,0,0" IsReadOnly="True" />
+                                            <Image Source="calendar.png" Width="20" Height="20" MouseLeftButtonDown="ValidityFromDateIcon_MouseLeftButtonDown" Cursor="Hand" />
+                                            <Popup Name="ValidityFromDatePopup" PlacementTarget="{Binding ElementName=ValidityFromDateTextBox}" StaysOpen="True">
+                                                <Calendar Name="ValidityFromDateCalendar" SelectedDatesChanged="ValidityFromDateCalendar_SelectedDatesChanged"
+                                  Tag="{Binding ElementName=ValidityFromDatePopup}" />
+                                            </Popup>
+                                        </StackPanel>
+
+                                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0" Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <TextBlock Text="To:    " VerticalAlignment="Center" />
+                                            <TextBox Name="ValidityToDateTextBox" Width="100" Margin="5,0,0,0" IsReadOnly="True" />
+                                            <Image Source="calendar.png" Width="20" Height="20" MouseLeftButtonDown="ValidityToDateIcon_MouseLeftButtonDown" Cursor="Hand" />
+                                            <Popup Name="ValidityToDatePopup" PlacementTarget="{Binding ElementName=ValidityToDateTextBox}" StaysOpen="True">
+                                                <Calendar Name="ValidityToDateCalendar" SelectedDatesChanged="ValidityToDateCalendar_SelectedDatesChanged"
+                                  Tag="{Binding ElementName=ValidityToDatePopup}" />
+                                            </Popup>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding validity_date}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+
+
+
+
+                        <!-- Column for Broker Code -->
+                        <GridViewColumn Header="Broker Code" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Broker Code"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"    IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Setter Property="IsChecked" Value="False"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- ComboBox -->
+                                        <ComboBox Width="140" Margin="0,2,0,0" 
+                          Loaded="BrokerCodeComboBox_Loaded"
+                          SelectionChanged="OnFilterSelectionChanged_Broker_Code" 
+                          x:Name="BrokerCodeComboBox"
+                          Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <!-- Items will be populated in the code-behind -->
+                                        </ComboBox>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding broker_code}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Index -->
+                        <GridViewColumn Header="Index" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Index"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍" IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Setter Property="IsChecked" Value="False"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" 
+                         TextChanged="OnFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding index}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Column for Broker Name -->
+                        <GridViewColumn Header="Broker Name" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Broker Name"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"   IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Setter Property="IsChecked" Value="False"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" 
+                         TextChanged="OnFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding broker_name}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Column for Station ID -->
+                        <GridViewColumn Header="Station ID" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Station ID"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"  IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Setter Property="IsChecked" Value="False"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" 
+                         TextChanged="OnFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding station_id}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Column for Security Code -->
+
+
+
+                        <GridViewColumn Header="Security Code" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Security Code"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"   IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- ComboBox -->
+                                        <ComboBox Width="140" Margin="0,2,0,0" 
+                          Loaded="SecurityCodeComboBox_Loaded"
+                          SelectionChanged="OnFilterComboBoxSelectionChanged_SecurityCode" 
+                          x:Name="SecurityCodeComboBox"
+                          Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <!-- Items will be populated in the code-behind -->
+                                        </ComboBox>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding security_code}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+
+
+                        <!-- Column for Security Name -->
+                        <GridViewColumn Header="Security Name" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Security Name"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍" IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" TextChanged="OnFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding security_name}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Column for Side -->
+
+                        <GridViewColumn Header="Side" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Side"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"  IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- ComboBox -->
+                                        <ComboBox Width="140" Margin="0,2,0,0" SelectionChanged="OnFilterSelectionChanged"
+                          Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <ComboBoxItem Content="Buy" Tag="1"/>
+                                            <ComboBoxItem Content="Sell" Tag="2"/>
+                                        </ComboBox>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding side}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+
+
+                        <!-- Column for Order Class -->
+                        <GridViewColumn Header="Order Class" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Order Class"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"  IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" TextChanged="OnFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding order_class}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Column for Entered Price -->
+                        <GridViewColumn Header="Entered Price" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Entered Price"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"  IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" TextChanged="OnFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding entered_price}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+                        <!-- Column for Entered Qty -->
+                        <GridViewColumn Header="Entered Qty" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Entered Qty"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"  IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" TextChanged="OnFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding entered_qty}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Column for Min Qty -->
+                        <GridViewColumn Header="Min Qty" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Min Qty"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍" IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" TextChanged="OnFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding min_qty}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+                        <!-- Column for Disp Qty -->
+                        <GridViewColumn Header="Disp Qty" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Disp Qty"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"  IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" TextChanged="OnFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding disp_qty}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+                        <!-- Column for Validity -->
+                        <GridViewColumn Header="Validity" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Validity"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍" IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- ComboBox -->
+                                        <ComboBox Width="140" Margin="0,2,0,0" SelectionChanged="OnFilterSelectionChanged"
+                          Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <ComboBoxItem Content="All" Tag="0"/>
+                                            <ComboBoxItem Content="DAY" Tag="1"/>
+                                            <ComboBoxItem Content="GTC" Tag="2"/>
+                                            <ComboBoxItem Content="GTD" Tag="3"/>
+                                            <ComboBoxItem Content="GTM" Tag="4"/>
+                                            <ComboBoxItem Content="VFU" Tag="5"/>
+                                            <ComboBoxItem Content="IOC" Tag="6"/>
+                                            <ComboBoxItem Content="FOK" Tag="7"/>
+                                            <ComboBoxItem Content="GTT" Tag="8"/>
+                                            <ComboBoxItem Content="VCU" Tag="9"/>
+                                            <ComboBoxItem Content="VFS" Tag="10"/>
+                                        </ComboBox>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding validity}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Column for Validity Time -->
+                        <GridViewColumn Header="Validity Time" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Validity Time"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍" IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" TextChanged="OnFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding validity_time}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Column for ACC_NUM -->
+                        <GridViewColumn Header="ACC_NUM" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="ACC_NUM"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"   IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" TextChanged="OnFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ACC_NUM}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Column for Client Name -->
+                        <GridViewColumn Header="Client Name" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="Client Name"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍" IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- TextBox -->
+                                        <TextBox Width="140" Margin="0,2,0,0" TextChanged="OnFilterTextChanged"
+                         Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding client_name}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Column for CNTRY_NAT_A -->
+
+
+
+
+                        <GridViewColumn Header="Notionality" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Text="CNTRY_NAT_A"/>
+                                            <!-- Filter Icon -->
+                                            <ToggleButton x:Name="FilterToggleButton" Width="16" Height="16" Margin="5,0,0,0"
+                                  Content="🔍"    IsChecked="False">
+                                                <ToggleButton.Style>
+                                                    <Style TargetType="ToggleButton">
+                                                        <Setter Property="Background" Value="Transparent"/>
+                                                        <Setter Property="BorderBrush" Value="Transparent"/>
+                                                        <Setter Property="BorderThickness" Value="0"/>
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsChecked" Value="True">
+                                                                <Setter Property="Background" Value="LightGray"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ToggleButton.Style>
+                                            </ToggleButton>
+                                        </StackPanel>
+
+                                        <!-- ComboBox -->
+                                        <ComboBox Width="140" Margin="0,2,0,0" 
+                          Loaded="NotionalityComboBox_Loaded"
+                          SelectionChanged="OnFilterSelectionChanged_Notionality" 
+                          x:Name="NotionalityComboBox"
+                          Visibility="{Binding IsChecked, ElementName=FilterToggleButton, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                            <!-- Items will be populated in the code-behind -->
+                                        </ComboBox>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CNTRY_NAT_A}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+
+
+
+
+
+                    </GridView>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Style for ListViewItem to change background color based on status -->
+        <Style x:Key="ListViewItemStyle" TargetType="ListViewItem">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding status}" Value="R">
+                    <Setter Property="Background" Value="Red"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding status}" Value="M">
+                    <Setter Property="Background" Value="#f0c2f0"/>
+                </DataTrigger>
+                <DataTrigger Binding="{Binding status}" Value="C">
+                    <Setter Property="Background" Value="#08a8a8"/>
+                </DataTrigger>
+
+
+
+                <DataTrigger Binding="{Binding status}" Value="TX">
+                    <Setter Property="Background" Value="#bff0bb"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding status}" Value="X">
+                    <Setter Property="Background" Value="#faf6a7"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding status}" Value="XT">
+                    <Setter Property="Background" Value="#bff0bb"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding status}" Value="MX">
+                    <Setter Property="Background" Value="#d5cef2"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding status}" Value="CX">
+                    <Setter Property="Background" Value="#f5f5f5"/>
+                </DataTrigger>
+
+                <DataTrigger Binding="{Binding status}" Value="F">
+                    <Setter Property="Background" Value="#8dadf7"/>
+                </DataTrigger>
+
+
+
+
+
+                <DataTrigger Binding="{Binding status}" Value="T">
+                    <Setter Property="Background" Value="#7678f5"/>
+                </DataTrigger>
+
+
+                <DataTrigger Binding="{Binding status}" Value="OK">
+                    <Setter Property="Background" Value="#7ed1ed"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+
+
+
+
+
+
+        <Style x:Key="lvStyle2" TargetType="{x:Type ListView}">
+            <Setter Property="VirtualizingStackPanel.IsVirtualizing" Value="True"/>
+            <Setter Property="VirtualizingStackPanel.VirtualizationMode" Value="Recycling"/>
+            <Setter Property="ScrollViewer.IsDeferredScrollingEnabled" Value="True"/>
+
+
+
+            <Setter Property="ListView.View">
+                <Setter.Value>
+                    <GridView >
+
+
+                        <!-- Column for Name -->
+                        <GridViewColumn Header="Name" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Name"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name , UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Entry Date -->
+                        <GridViewColumn Header="Entry Date" Width="250">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="Entry Date" />
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding entry_date}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Status -->
+                        <GridViewColumn Header="Status" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Status"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding status, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+
+                        </GridViewColumn>
+
+                        <!-- Column for Client ID -->
+                        <GridViewColumn Header="Client ID" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Client ID"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Client_id}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Validity Date -->
+                        <GridViewColumn Header="Validity Date" Width="250">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Vertical">
+                                        <TextBlock Text="Validity Date" />
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding validity_date}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <!-- Column for Broker Code -->
+                        <GridViewColumn Header="Broker Code" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Broker Code"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding broker_code}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Index -->
+                        <GridViewColumn Header="Index" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Index"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding index}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Broker Name -->
+                        <GridViewColumn Header="Broker Name" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Broker Name"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding broker_name}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Station ID -->
+                        <GridViewColumn Header="Station ID" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Station ID"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding station_id}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Security Code -->
+
+
+
+
+                        <GridViewColumn Header="Security Code" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Security Code"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding security_code}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+
+
+                        <!-- Column for Security Name -->
+                        <GridViewColumn Header="Security Name" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Security Name"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding security_name}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Side -->
+                        <GridViewColumn Header="Side" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Side"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding side}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <!-- Column for Order Class -->
+                        <GridViewColumn Header="Order Class" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Order Class"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding order_class}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Entered Price -->
+                        <GridViewColumn Header="Entered Price" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Entered Price"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding entered_price}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Entered Qty -->
+                        <GridViewColumn Header="Entered Qty" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Entered Qty"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding entered_qty}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Min Qty -->
+                        <GridViewColumn Header="Min Qty" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Min Qty"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding min_qty}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Disp Qty -->
+                        <GridViewColumn Header="Disp Qty" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Disp Qty"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding disp_qty}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Validity -->
+                        <GridViewColumn Header="Validity" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Validity"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding validity}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Validity Time -->
+                        <GridViewColumn Header="Validity Time" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Validity Time"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding validity_time}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for ACC_NUM -->
+                        <GridViewColumn Header="ACC_NUM" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="ACC_NUM"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding ACC_NUM}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for Client Name -->
+                        <GridViewColumn Header="Client Name" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="Client Name"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding client_name}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Column for CNTRY_NAT_A -->
+
+
+
+
+                        <GridViewColumn Header="Notionality" Width="150">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="CNTRY_NAT_A"/>
+
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CNTRY_NAT_A}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+
+
+
+
+
+
+                    </GridView>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </UserControl.Resources>
+
+    <Grid Margin="5">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+        <GroupBox Grid.Row="0" Header="ItemsProvider">
+            <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                <TextBlock Text="Number of items:" Margin="5" TextAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbNumItems" Margin="5" Text="13000000" Width="60" VerticalAlignment="Center"/>
+                <TextBlock Text="Fetch Delay (ms):" Margin="5" TextAlignment="Right" VerticalAlignment="Center"/>
+                <TextBox x:Name="tbFetchDelay" Margin="5" Text="1000" Width="60" VerticalAlignment="Center"/>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Header="Collection">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,2,0,0"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+
+                    <TextBlock Text="Page size:" Margin="5" TextAlignment="Right" VerticalAlignment="Center"/>
+                    <TextBox x:Name="tbPageSize" Margin="5" Text="900000" Width="60" VerticalAlignment="Center"/>
+                    <TextBlock Text="Result Count :" Margin="5" VerticalAlignment="Center" Width="76"/>
+
+
+
+
+                    <TextBlock Width="80" x:Name="tbResultCount" Height="16" 
+           Text="{Binding Path=Count, Mode=OneWay}" />
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <CheckBox x:Name="chkActiveActions" Content="ActiveActions" VerticalAlignment="Center" Checked="chkActiveActions_Checked" Unchecked="chkActiveActions_Unchecked" IsChecked="True" Margin="0,0,5,0"/>
+                        <CheckBox x:Name="chkToday"    Content="Today" VerticalAlignment="Center" Checked="chkToday_Checked" Unchecked="chkToday_Unchecked" IsChecked="True" Margin="0,0,5,0"/>
+                        <CheckBox x:Name="chkCurrentYear"   Content="Current Year" VerticalAlignment="Center" Checked="chkCurrentYear_Checked" Unchecked="chkCurrentYear_Unchecked"  Margin="0,0,20,0"/>
+                    </StackPanel>
+
+
+
+                    <!-- CheckBox for History -->
+                    <CheckBox x:Name="chkHistory" Content="History" Margin="5" VerticalAlignment="Center" Checked="chkHistory_Checked" Unchecked="chkHistory_Unchecked"/>
+
+                    <!-- StackPanel for Date Pickers, initially hidden -->
+
+
+
+
+
+
+                    <StackPanel x:Name="spHistoryOptions" Orientation="Horizontal" Visibility="Collapsed" Margin="5,0,0,0">
+
+                        <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                            <TextBlock Text="From:" VerticalAlignment="Center" />
+                            <TextBox Name="source_file_FromDateTextBox" Width="100" Height="17" Margin="5,0,0,0" IsReadOnly="True" />
+                            <Image Source="calendar.png" Margin="3,0,0,0" Width="20" Height="20" MouseLeftButtonDown="source_file_FromDateIcon_MouseLeftButtonDown" Cursor="Hand" />
+                            <Popup Name="source_file_FromDatePopup" PlacementTarget="{Binding ElementName=source_file_FromDateTextBox}" StaysOpen="True">
+                                <Calendar Name="FromDateCalendar" SelectedDatesChanged="FromDate_source_file_Calendar_SelectedDatesChanged"
+Tag="{Binding ElementName=source_file_FromDatePopup}" />
+                            </Popup>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10,2,0,0">
+                            <TextBlock Text="To:    " VerticalAlignment="Center" />
+                            <TextBox Name="source_file_ToDateTextBox" Width="100"  Height="17" Margin="5,0,0,0" IsReadOnly="True" />
+                            <Image Source="calendar.png"  Margin="3,0,0,0" Width="20" Height="20" MouseLeftButtonDown="source_file_ToDateIcon_MouseLeftButtonDown" Cursor="Hand" />
+                            <Popup Name="source_file_ToDatePopup" PlacementTarget="{Binding ElementName=source_file_ToDateTextBox}" StaysOpen="True">
+                                <Calendar Name="ToDateCalendar" SelectedDatesChanged="ToDate_source_file_Calendar_SelectedDatesChanged"
+Tag="{Binding ElementName=source_file_ToDatePopup}" />
+                            </Popup>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!-- Popup for DatePicker -->
+                    <Button Content="GET" Click="Button_Click" Margin="5" Width="100" VerticalAlignment="Center"/>
+                </StackPanel>
+
+
+
+
+
+
+
+            </StackPanel>
+        </GroupBox>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBlock Text="Memory Usage:" Margin="5" VerticalAlignment="Center"/>
+            <TextBlock x:Name="tbMemory" Margin="5" Width="80" VerticalAlignment="Center"/>
+
+
+
+        </StackPanel>
+
+
+
+
+        <ListView x:Name="lvStyle" Grid.Row="3" Margin="5,5,5,360" Style="{DynamicResource lvStyle}" ItemContainerStyle="{StaticResource ListViewItemStyle}"/>
+
+        <!-- New ListView added below the existing one -->
+        <ListView  x:Name="lvStyle2" Grid.Row="4" Margin="5,700,5,5" Style="{DynamicResource lvStyle2}" ItemContainerStyle="{StaticResource ListViewItemStyle}"/>
+    </Grid>
+</UserControl>
+
+
+    
